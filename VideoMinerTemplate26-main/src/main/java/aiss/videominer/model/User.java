@@ -1,19 +1,17 @@
 package aiss.videominer.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
-/**
- * @author Juan C. Alonso
- */
 @Entity
 @Table(name = "VMUser")
 public class User {
 
     @Id
     @JsonProperty("id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private String id;  // ← Cambiado de Long a String
 
     @JsonProperty("name")
     private String name;
@@ -24,46 +22,25 @@ public class User {
     @JsonProperty("picture_link")
     private String picture_link;
 
-    public Long getId() {
-        return id;
-    }
+    public User() {}
 
-    public void setId(Long id) {
+    public User(String id, String name, String user_link, String picture_link) {
         this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
         this.name = name;
-    }
-
-    public String getUser_link() {
-        return user_link;
-    }
-
-    public void setUser_link(String user_link) {
         this.user_link = user_link;
-    }
-
-    public String getPicture_link() {
-        return picture_link;
-    }
-
-    public void setPicture_link(String picture_link) {
         this.picture_link = picture_link;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", user_link='" + user_link + '\'' +
-                ", picture_link='" + picture_link + '\'' +
-                '}';
-    }
+    // Getters y Setters
+    public String getId() { return id; }
+    public void setId(String id) { this.id = id; }
 
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
+
+    public String getUser_link() { return user_link; }
+    public void setUser_link(String user_link) { this.user_link = user_link; }
+
+    public String getPicture_link() { return picture_link; }
+    public void setPicture_link(String picture_link) { this.picture_link = picture_link; }
 }
