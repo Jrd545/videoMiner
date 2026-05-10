@@ -1,17 +1,19 @@
 package aiss.videominer.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
+/**
+ * @author Juan C. Alonso
+ */
 @Entity
 @Table(name = "VMUser")
 public class User {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     @JsonProperty("id")
-    private String id;  // ← Cambiado de Long a String
+    private String id;
 
     @JsonProperty("name")
     private String name;
